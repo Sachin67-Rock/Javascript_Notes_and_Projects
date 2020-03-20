@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Book the Notebook before time</title>
+        <script type="text/javascript">
+
+            function parseDonuts(DonutsString)
+            {
+                NumDonuts = parseInt(DonutsString);
+                if(DonutsString.indexOf("dozen")!=-1)
+                    NumDonuts *= 12;
+                    return NumDonuts;
+            }
+            
+            function Orderbook()
+            {
+                const BookRATE =  100.0;
+                const TAXRATE =  0.50;
+                var Name = document.getElementById("custname").value;
+                var NumMathsBooks = parseDonuts(document.getElementById("MathsBooks").value);
+                var NumScienceBooks = parseDonuts(document.getElementById("ScienceBooks").value);
+                var PickUpTimeMinutes = isNaN(document.getElementById("pickuptime").value);
+                if(isNaN(NumMathsBooks))
+                    NumMathsBooks = 0;
+                if(isNaN(NumScienceBooks ))
+                    NumScienceBooks = 0; 
+                var Subtotal = (NumMathsBooks + NumScienceBooks) * BookRATE;
+                var Tax = Subtotal * TAXRATE;
+                var Ordertotal = Subtotal + Tax;
+                document.getElementById("Subtotal").value = "$" + Subtotal.toFixed(2);
+                document.getElementById("Tax").value = "$" + Tax.toFixed(2);
+                document.getElementById("Ordertotal").value = "$" + Ordertotal.toFixed(2);
+                
+
+            }
+            function Placeorder()  {
+                if(document.getElementById("custname").value == "")
+                    alert("Please provide the name of the customer");
+                else if (document.getElementById("pickuptime").value == "" || isNaN(document.getElementById("pickuptime").value ))
+                    alert("Please provide the pickup time in minutes before submitting the form");
+                else
+                    //Submit the form to the server
+                    form.submit();
+            }
+           </script>
+    </head>
+   <body>
+       <h2>Book the Notebooks before time</h2>
+       <div id="frame">
+           <form name="orderform" type="books.php" method="post">
+               <div class="field">
+                   # Customer Name:<input type ="text" id="custname" name="custname" value="" onchange ="Orderbook();"/>
+               </div>
+               <div class ="field">
+                   # of Maths Books:<input type="text" id="MathsBooks" name="MathsBooks" value="" onchange="Orderbook();"/> 
+               </div>
+
+               <div class ="field">
+                # of Science Books:<input type="text" id="ScienceBooks" name="ScienceBooks" value="" onchange="Orderbook();"/> 
+               </div>
+               <div class = "field">
+                   # Pick up Time in Minutes:<input type="text" id ="pickuptime" name ="pickuptime" value = ""  onchange = "Orderbook();"/>
+               </div>
+              
+               <div class ="field">
+                SubTotal:<input type="text" id="Subtotal" name="Subtotal" value="" onchange="Orderbook();"/> 
+                </div>
+ 
+                <div class ="field">
+                 Tax:<input type="text" id="Tax" name="Tax" value="" onchange="Orderbook();"/> 
+                 </div>
+                 <div class ="field">
+                   Ordertotal:<input type="text" id="Ordertotal" name="Ordertotal" value="" onchange="Orderbook();"/> 
+                     </div>
+
+               <div class ="field">
+                <input type="button" value ="Placeorder" onclick="Placeorder(this.form);"/> 
+               </div>
+           </form>
+
+           
+       </div>      
+   </body>
+
+</html>

@@ -1,0 +1,18 @@
+* Order books online and pickup *
+
+
+*-------------------------------*
+Make a form that except mandatory 
+data to order books online
+
+Javascript function used
+onchange()
+tofixed()
+Getelementbyid()
+
+Function used
+Orderbook()
+To fetch data from the form
+Placeorder()
+TO Submit the form online
+*-------------------------------*
