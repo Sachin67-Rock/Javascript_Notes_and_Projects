@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Virtual I Rock</title>
+        <script type="type/javascript" src="Cookie.js"></script>
+    </head>
+    <body onload="alert('HEllo:I am your pet rock'); resizerock(); " onresize = "resizerock();";>
+        <h2>Vitual Irock</h2>
+        <div style = "margin-top: 100px; text-align: center;">
+         <img id = "rockimg" src="irock.jpg" style="cursor: pointer;" onclick="touchrock(); ">
+         <script type="text/javascript">
+         function touchrock(){
+         if(username) // First Check is the username is exist
+         {
+             alert("I like the attention" + username + "Thank You");
+         }    
+         else
+         var username = prompt("what is yourname?" , "Enter your name here.");
+       
+         {
+             alert("It is good to meet you",+username+".");
+             document.getElementById("rockimg").src = "irock_happy.jpg";
+             setTimeout("document.getElementById('rockimg').src = 'irock.jpg'; " , 6000);
+             writeCookie("irock_username" , username , 5*365);
+
+
+
+         }
+         }
+         function resizerock(){
+             document.getElementById("rockimg").style.height = (document.body.clientHeight -100) * 0.9;
+
+         }
+
+         //Greet the existing user using the cookies
+         function greetUser(){
+             username = readCookie("irock_username");
+             if(username) {
+                 alert("Hello" + username + "I missed you");
+             }
+             else {
+                alert("Hello" + "I am your Pet rock");
+             }
+         }
+
+        
+         </script>
+        </div>
+    </body>
+</html>
